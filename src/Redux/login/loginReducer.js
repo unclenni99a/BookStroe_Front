@@ -1,4 +1,4 @@
-import {LOGIN, LOG_OUT, LOGIN_SUCCESS, LOGIN_FAILED} from './loginTypes'
+import {LOGIN_SUCCEED, LOGIN_FAILED, LOG_OUT} from './loginTypes'
 
 const initialState = {
     loggedin:false,
@@ -6,19 +6,20 @@ const initialState = {
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default (state = initialState, { type, payload }) => {
+const loginReducer = (state = initialState,type) => {
     switch (type) {
-
-    case LOGIN_SUCCESS:
-        return { loggedin: true,...state}
+        case LOGIN_SUCCEED:
+            return { loggedin: true,...state}
+            
+        case LOGIN_FAILED:
+            return { ...state}
         
-    case LOGIN_FAILED:
-        return { ...state}
-    
-    case LOGIN_FAILED:
-        return { loggedin: false ,...state}
-    
-    default:
-        return state
+        case LOG_OUT:
+            return { loggedin: false, ...state}
+        
+        default:
+            return state
     }
 }
+
+export default loginReducer

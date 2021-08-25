@@ -1,5 +1,6 @@
+import loginReducer from "./Redux/login/loginReducer"; 
 const initialState = {
-    value : 0
+    loginReducer: loginReducer
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
