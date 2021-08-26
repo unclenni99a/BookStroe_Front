@@ -1,6 +1,8 @@
 import loginReducer from "./Redux/login/loginReducer"; 
+import signupReducer from "./Redux/signup/signupReducer"; 
 const initialState = {
-    loginReducer: loginReducer
+    loginReducer: loginReducer,
+    signupReducer: signupReducer
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {

@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
-import './login.css'
+import './signup.css'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Col, Row } from "react-bootstrap";
 import { useDispatch } from 'react-redux'
-import { login } from '../../Redux/login/loginActions'
-export default function Login(){
+import { signup } from '../../Redux/signup/signupActions'
+export default function SignUp(){
 
+    const [email, setEmail] = useState('')
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     
@@ -17,8 +18,19 @@ export default function Login(){
                 <Row className="justify-content-md-center">
                     <Col lg="6">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-center">
+                    <Col lg="6" >
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>User Name</Form.Label>
-                            <Form.Control type="email" placeholder="User Name" value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+                            <Form.Control type="userName" placeholder="User Name" value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
                         </Form.Group>
                     </Col>
                 </Row>
@@ -32,7 +44,7 @@ export default function Login(){
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
                         <Button onClick={() => {
-                            dispatch(login(userName,password))
+                            dispatch(signup(email,userName,password))
                         }} variant="primary" type="button">
                             Submit
                         </Button>
