@@ -1,13 +1,16 @@
 import axios from '../../axiosHolder'
 import { SIGNUP_SUCCEED, SIGNUP_FAILED } from './signupTypes'
 
-export const signup = (email, username, password) => {
+export const signup = (email, userName, password) => {
+    console.log("asdsadasdas")
     return dispatch => {
         const headers = {
             'Content-Type' : 'application/json',
         }
         const body = {
-            Authorization: email + ';' + username + ';' + password,
+            email,
+            userName,
+            password,
         }
         axios.post("signup", body, {headers})
         .then(response => {
