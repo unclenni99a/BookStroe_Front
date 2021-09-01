@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Container, Navbar, Nav } from 'react-bootstrap' 
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import history from '../../history';
 
 function Header() {
     const [loggedIn, setloggedIn] = useState(false)
@@ -18,9 +19,9 @@ function Header() {
                             { loggedIn ===true?
                             <Nav>
                                 <Nav.Link>Cart</Nav.Link>
-                                <Nav.Link onClick={ () => {setloggedIn(false)}}>Log Out</Nav.Link>
+                                <Nav.Link onClick={ () => {history.push('/home'); console.log(history); setloggedIn(false)}}>Log Out</Nav.Link>
                             </Nav>
-                                : <Nav.Link onClick={ () => {setloggedIn(true)}} href="#deets">Login</Nav.Link>}
+                                : <Nav.Link onClick={ () => {history.push('/login'); console.log(history);; setloggedIn(true)}} >Login</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
