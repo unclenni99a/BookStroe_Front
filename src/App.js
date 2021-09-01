@@ -5,7 +5,7 @@ import SignUp from './Components/signup/signup';
 import Footer from './Components/footer/footer';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import history from './history';
-
+import Home from './Components/home/home'
 function App() {
   return (
     <div className="App">
@@ -18,6 +18,12 @@ function App() {
               </Route>
               <Route path="/signup">
                 <SignUp />
+              </Route>
+              <Route path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/">
+                <Home />
               </Route>
             </Switch>
           </div>
