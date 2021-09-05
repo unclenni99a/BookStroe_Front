@@ -1,16 +1,26 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './signup.css'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { signup } from '../../Redux/signup/signupActions'
-export default function SignUp(){
+
+const SignUp = ({history}) => {
+
+    const signupReducer= (useSelector((state) => state.signupReducer))
 
     const [email, setEmail] = useState('')
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if(signupReducer.signedUp)
+            history.push('/login')
+        return () => {
+        }
+    }, [signupReducer.signedUp])
 
     return (
         <div className="container">
@@ -54,3 +64,4 @@ export default function SignUp(){
         </div>
     )
 }
+export default SignUp
