@@ -7,7 +7,7 @@ import { signup } from '../../Redux/signup/signupActions'
 
 const SignUp = ({history}) => {
 
-    const signupReducer= (useSelector((state) => state.signupReducer))
+    const signupReducer= (useSelector((state) => state.signupReducer)) 
 
     const [email, setEmail] = useState('')
     const [userName, setUserName] = useState('')
@@ -20,7 +20,7 @@ const SignUp = ({history}) => {
             history.push('/login')
         return () => {
         }
-    }, [signupReducer.signedUp])
+    }, [history, signupReducer.signedUp])
 
     return (
         <div className="container">

@@ -1,17 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './login.css'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Form, Button, Col, Row } from "react-bootstrap";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../Redux/login/loginActions'
 
 
-export default function Login(){
+export default function Login({history}){
 
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
-    
+    const loginReducer = useSelector(state => state.loginReducer)
     const dispatch = useDispatch()
+    console.log(loginReducer)
+    useEffect(() => {
+        console.log(loginReducer.loggedIn)
+        if(loginReducer.loggedIn)
+        {
+            history.push('/home')
+        }
+        return () => {
+        }
+    }, [history,loginReducer.loggedIn])
 
     return (
         <div className="container">

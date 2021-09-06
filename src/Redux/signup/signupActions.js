@@ -13,13 +13,11 @@ export const signup = (email, userName, password) => {
         }
         axios.post("signup", body, {headers})
         .then(response => {
-            console.log(response)
             dispatch({type:SIGNUP_SUCCEED, payload: response.data})
         })
         .catch(error => 
         {
-            console.log(error)
-            dispatch({type:SIGNUP_FAILED})
+            dispatch({type:SIGNUP_FAILED, payload: error})
         })
     }
 }
