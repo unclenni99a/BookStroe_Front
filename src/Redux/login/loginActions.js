@@ -1,5 +1,5 @@
 import axios from '../../axiosHolder'
-import { LOGIN_FAILED, LOGIN_SUCCEED } from './loginTypes'
+import { LOGIN_FAILED, LOGIN_SUCCEED, LOG_OUT } from './loginTypes'
 
 export const login = (username, password) => {
     return dispatch => {
@@ -19,5 +19,12 @@ export const login = (username, password) => {
             console.log(error)
             dispatch({type:LOGIN_FAILED})
         })
+    }
+}
+
+export const logout = () => {
+    console.log('shsasdasdsae')
+    return dispatch => {
+        dispatch({type:LOG_OUT, payload:false})
     }
 }

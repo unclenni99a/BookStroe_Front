@@ -12,9 +12,7 @@ export default function Login({history}){
     const [password, setPassword] = useState('')
     const loginReducer = useSelector(state => state.loginReducer)
     const dispatch = useDispatch()
-    console.log(loginReducer)
     useEffect(() => {
-        console.log(loginReducer.loggedIn)
         if(loginReducer.loggedIn)
         {
             history.push('/home')

@@ -17,7 +17,10 @@ const SignUp = ({history}) => {
 
     useEffect(() => {
         if(signupReducer.signedUp)
+        {
+            signupReducer.signedUp = false; // Prevent redirect on Logging out or trying to sign up again.
             history.push('/login')
+        }
         return () => {
         }
     }, [history, signupReducer.signedUp])
