@@ -6,13 +6,13 @@ const initialState = {
     loading: true
 }
 
-export default bookReducer = (state = initialState, action) => {
-    switch(action.Type){
+export default (state = initialState, action) => {
+    switch(action.type){
         case GET_BOOKS_SUCCESS:
-            return {...state, books: action.data, loading:false}
+            return {...state, books: action.payload, loading:false}
 
         case GET_BOOKS_FAILURE:
-            return {...state, books: null, loading:false}
+            return {...state, books: [], loading:false}
         
         default:
             return state

@@ -42,7 +42,8 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
+    color: #ffee8e;
+  }
 
 #footer{
   margin-top: auto;

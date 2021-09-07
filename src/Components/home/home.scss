@@ -8,11 +8,14 @@
     height: 100%;
     width: 100%;
 
-    #products{
+    #recommendations{
         margin-top: 5%;
-        font-size: 1cm;
         color: #ffee8e;
         text-align: left;
-    }
+    };
+
+    #spinner{
+        margin-top: 5%;
+    };
 
 }

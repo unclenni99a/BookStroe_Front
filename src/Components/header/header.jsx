@@ -4,7 +4,7 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../Redux/login/loginActions'
-
+import "./header.scss";
 function Header({ history }) {
     const [loggedIn, setloggedIn] = useState(false)
     const loginReducer = useSelector(state => state.loginReducer)
@@ -21,7 +21,7 @@ function Header({ history }) {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand onClick={ () => {history.push('/home')}} >BookStore</Navbar.Brand>
+                    <Navbar.Brand id="BookStore" onClick={ () => {history.push('/home')}} >BookStore</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
