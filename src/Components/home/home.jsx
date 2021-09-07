@@ -12,6 +12,7 @@ export default function Home() {
     
     
     useEffect(() => {
+        console.log(books)
         if(books.length === 0)
         {
             dispatch(getAllBooks());
@@ -30,20 +31,18 @@ export default function Home() {
                 <p>Here are some recommendations:</p>
             </div>
             <div>
-                {bookReducer.loading === true? 
+                {bookReducer.loading === true?
                 <Spinner id="spinner" animation="border" />: 
-                books.forEach(book => {
-                    <div>
-                        <Card style={{ width: '18rem' }}>
-                            <Card.Body>
-                                <Card.Title>{book.title}</Card.Title>
-                                <Card.Text>
+                books.map(book => (
+                    <Card className="card" style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Title>{book.title}</Card.Title>
+                            <Card.Text>
                                 {book.description}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </div> 
-                })}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                ))}
                 </div>
         </div>
     )
