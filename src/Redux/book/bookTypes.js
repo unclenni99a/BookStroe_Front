@@ -1,0 +1,3 @@
+export default GET_BOOKS = 'GET_BOOKS'
+export default GET_BOOKS_SUCCESS = 'GET_BOOKS_SUCCESS'
+export default GET_BOOKS_FAILURE = 'GET_BOOKS_FAILURE'

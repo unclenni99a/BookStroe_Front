@@ -1,11 +1,17 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
+import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import './home.scss' 
 
 export default function Home() {
     return (
-        <div>
+        <div id="homePage" className="container">
             <h1>Welcome to our BookStore</h1>
-            <h2>We are proud to have you with us here.</h2>
-            <h3>You can find some of our products here</h3>
+            <h5>You can find all the books you need here</h5>
+
+            <div id="products">
+                Here are some of our products:
+
+            </div>
         </div>
     )
 }
