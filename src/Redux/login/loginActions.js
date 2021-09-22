@@ -10,7 +10,7 @@ export const login = (username, password) => {
         const headers = {
             'Content-Type' : 'application/json',
         }
-        axios.post("login", body, {headers})
+        axios.post("/users/login", body, {headers})
         .then(response => {
             dispatch({type:LOGIN_SUCCEED, payload: response.data})
         })

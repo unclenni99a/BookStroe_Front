@@ -1,7 +1,7 @@
 import axios from '../../axiosHolder'
 import { SIGNUP_SUCCEED, SIGNUP_FAILED } from './signupTypes'
 
-export const signup = (email, userName, password) => {
+export const signup = (email, userName, birthday, password) => {
     return dispatch => {
         const headers = {
             'Content-Type' : 'application/json',
@@ -9,6 +9,7 @@ export const signup = (email, userName, password) => {
         const body = {
             email,
             userName,
+            birthday,
             password,
         }
         axios.post("signup", body, {headers})

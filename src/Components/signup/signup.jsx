@@ -11,6 +11,7 @@ const SignUp = ({history}) => {
 
     const [email, setEmail] = useState('')
     const [userName, setUserName] = useState('')
+    const [birthday, setBirthday] = useState('')
     const [password, setPassword] = useState('')
     
     const dispatch = useDispatch()
@@ -30,7 +31,7 @@ const SignUp = ({history}) => {
             <Form className="mt-5">
                 <Row className="justify-content-md-center">
                     <Col lg="6">
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3" controlId="userName">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                             <Form.Text className="text-muted">
@@ -48,16 +49,21 @@ const SignUp = ({history}) => {
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
+                    <Col lg="6" >
+                        <Form.Group className="mb-3" controlId="birthday">
+                            <Form.Label>Birthday</Form.Label>
+                            <Form.Control type="date" value={birthday} onChange={(e) => {setBirthday(e.target.value)}}/>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-center">
                     <Col lg="6">
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
-                        </Form.Group>
                         <Button onClick={() => {
-                            dispatch(signup(email,userName,password))
+                            dispatch(signup(email, userName, birthday, password))
                         }} variant="primary" type="button">
                             Submit
                         </Button>

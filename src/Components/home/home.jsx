@@ -12,7 +12,6 @@ export default function Home() {
     
     
     useEffect(() => {
-        console.log(books)
         if(books.length === 0)
         {
             dispatch(getAllBooks());
