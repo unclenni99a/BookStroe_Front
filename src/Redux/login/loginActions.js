@@ -22,6 +22,24 @@ export const login = (username, password) => {
     }
 }
 
+export const loginWithToken = (token) => {
+    return dispatch => {
+        const headers = {
+            'Content-Type' : 'application/json',
+            'authorization': token
+        }
+        axios.post("/users/login", {}, {headers})
+        .then(response => {
+            dispatch({type:LOGIN_SUCCEED, payload: response.data})
+        })
+        .catch(error => 
+        {
+            console.log(error)
+            dispatch({type:LOGIN_FAILED})
+        })
+    }
+}
+
 export const logout = () => {
     console.log('shsasdasdsae')
     return dispatch => {

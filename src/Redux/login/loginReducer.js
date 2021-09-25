@@ -1,4 +1,8 @@
 import {LOGIN_SUCCEED, LOGIN_FAILED, LOG_OUT} from './loginTypes'
+import { setCookie } from 'react-use-cookie';
+
+
+
 
 const initialState = {
     loggedIn: "",
@@ -6,10 +10,16 @@ const initialState = {
     email: "",
 }
 
+const saveLocale = token => {
+  setCookie('token', token,{days: 31});
+};
+
+
 // eslint-disable-next-line import/no-anonymous-default-export
 const loginReducer = (state = initialState, action)=> {
     switch (action.type) {
         case LOGIN_SUCCEED:
+            saveLocale(action.payload.token)
             return {  
                 ...state, 
                 userName:action.payload.userName,
