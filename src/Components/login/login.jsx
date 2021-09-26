@@ -4,6 +4,7 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Alert, Form, Button, Col, Row, Fade } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../Redux/login/loginActions'
+import { setCookie } from 'react-use-cookie';
 
 
 export default function Login({history}){
@@ -20,7 +21,10 @@ export default function Login({history}){
             history.push('/home')
         }
         if(loginReducer.loggedIn === false)
+        {
             setOpen(true)
+            setCookie('token',undefined)
+        }
         return () => {
         }
     }, [history,loginReducer.loggedIn])

@@ -5,9 +5,18 @@ import { withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../Redux/login/loginActions'
 import "./header.scss";
+import { getCookie } from 'react-use-cookie';
+import { loginWithToken } from '../../Redux/login/loginActions';
+
 function Header({ history }) {
     const [loggedIn, setloggedIn] = useState(false)
     const loginReducer = useSelector(state => state.loginReducer)
+
+    const dispatch = useDispatch()
+    if(getCookie('token') !== '' && getCookie('token') !== 'undefined')
+    {
+        dispatch(loginWithToken(getCookie('token')));
+    }
 
     useEffect(() => {
         setloggedIn(loginReducer.loggedIn)
@@ -15,8 +24,6 @@ function Header({ history }) {
         }
     }, [history,loginReducer.loggedIn])
     
-    const dispatch = useDispatch()
-
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

@@ -3,19 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import './home.scss' ;
 import { getAllBooks } from '../../Redux/book/bookActions';
-import { loginWithToken } from '../../Redux/login/loginActions';
 import { Spinner, Card, CardGroup, Row, Col } from "react-bootstrap";
-import { getCookie } from 'react-use-cookie';
 export default function Home() {
 
     const [books, setBooks] = useState([])
     const bookReducer = useSelector(state => state.bookReducer)
     const dispatch = useDispatch()
     
-    if(getCookie('token') !== '')
-    {
-        dispatch(loginWithToken(getCookie('token')));
-    }
+
     useEffect(() => {
         if(books.length === 0)
         {
@@ -24,7 +19,7 @@ export default function Home() {
         }
         return () => {
         }
-    }, [dispatch,bookReducer])
+    }, [])
 
     return (
         <div id="homePage" className="container">
