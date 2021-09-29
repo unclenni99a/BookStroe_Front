@@ -10,7 +10,6 @@ export default function Home() {
     const bookReducer = useSelector(state => state.bookReducer)
     const dispatch = useDispatch()
     
-
     useEffect(() => {
         if(books.length === 0)
         {

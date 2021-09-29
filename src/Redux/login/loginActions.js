@@ -7,16 +7,12 @@ export const login = (username, password) => {
             userName: username,
             password: password
         }
-        const headers = {
-            'Content-Type' : 'application/json',
-        }
-        axios.post("/users/login", body, {headers})
+        axios.post("/users/login", body)
         .then(response => {
             dispatch({type:LOGIN_SUCCEED, payload: response.data})
         })
         .catch(error => 
         {
-            console.log(error)
             dispatch({type:LOGIN_FAILED})
         })
     }
@@ -24,11 +20,7 @@ export const login = (username, password) => {
 
 export const loginWithToken = (token) => {
     return dispatch => {
-        const headers = {
-            'Content-Type' : 'application/json',
-            'authorization': token
-        }
-        axios.post("/users/login", {}, {headers})
+        axios.post("/users/login", {})
         .then(response => {
             dispatch({type:LOGIN_SUCCEED, payload: response.data})
         })
@@ -41,7 +33,6 @@ export const loginWithToken = (token) => {
 }
 
 export const logout = () => {
-    console.log('shsasdasdsae')
     return dispatch => {
         dispatch({type:LOG_OUT, payload:false})
     }

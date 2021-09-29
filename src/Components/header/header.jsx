@@ -13,10 +13,13 @@ function Header({ history }) {
     const loginReducer = useSelector(state => state.loginReducer)
 
     const dispatch = useDispatch()
-    if(getCookie('token') !== '' && getCookie('token') !== 'undefined')
-    {
-        dispatch(loginWithToken(getCookie('token')));
-    }
+
+    useEffect(() => {
+        if(getCookie('token') !== '' && getCookie('token') !== 'undefined')
+        {
+            dispatch(loginWithToken(getCookie('token')));
+        }
+    }, [])
 
     useEffect(() => {
         setloggedIn(loginReducer.loggedIn)
@@ -36,6 +39,7 @@ function Header({ history }) {
                         <Nav>
                             { loggedIn ===true?
                             <Nav>
+                                <Nav.Link onClick={ () => {history.push('/sellBook')}}>Sell your book</Nav.Link>
                                 <Nav.Link>Cart</Nav.Link>
                                 <Nav.Link onClick={ () => {dispatch(logout());}}>Log Out</Nav.Link>
                             </Nav>

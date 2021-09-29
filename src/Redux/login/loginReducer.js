@@ -1,9 +1,6 @@
 import {LOGIN_SUCCEED, LOGIN_FAILED, LOG_OUT} from './loginTypes'
 import { setCookie } from 'react-use-cookie';
 
-
-
-
 const initialState = {
     loggedIn: "",
     userName: "",
@@ -14,6 +11,9 @@ const saveLocale = token => {
   setCookie('token', token,{days: 31});
 };
 
+const removeLocale = () => {
+    setCookie('token', '');
+  };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const loginReducer = (state = initialState, action)=> {
@@ -31,6 +31,7 @@ const loginReducer = (state = initialState, action)=> {
             return { ...state, loggedIn: false}
             
         case LOG_OUT:
+            removeLocale()
             return { ...state, loggedIn: false}
         
         default:
