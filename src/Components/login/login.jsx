@@ -45,7 +45,7 @@ export default function Login({history}){
                     <Col lg="6">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>User Name</Form.Label>
-                            <Form.Control type="email" placeholder="User Name" value={userName} onChange={(e) => {setUserName(e.target.value)}}/>
+                            <Form.Control type="email" placeholder="User Name" value={userName} onChange={(e) => {setUserName(e.target.value.toUpperCase());}}/>
                         </Form.Group>
                     </Col>
                 </Row>
